@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.1">
+  <persistence-unit name="medPU" transaction-type="JTA">
+  
+    <jta-data-source>jdbc/med</jta-data-source> 
+    
+    <class>com.example.medapp.model.Doctor</class>
+    <class>com.example.medapp.model.ShiftReport</class>
+    <properties>      
+      <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+    </properties>
+  </persistence-unit>
+</persistence>
+
