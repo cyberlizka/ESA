@@ -6,3 +6,27 @@
 #### IDE: Eclipse IDE for Enterprise Java and Web Developers
 #### JDK: jdk-17.0.16+8
 #### GlassFish: Eclipse GlassFish 7.0.24 
+#### СУБД: PostgreSQL
+SQL:
+```
+CREATE TABLE doctor (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  specialty VARCHAR(100)
+);
+
+CREATE TABLE shift_report (
+  id SERIAL PRIMARY KEY,
+  doctor_id INT NOT NULL REFERENCES doctor(id) ON DELETE CASCADE,
+  report_date DATE,
+  notes TEXT
+);
+
+INSERT INTO doctor (name, specialty) VALUES 
+  ('Иванов Иван', 'Терапевт'),
+  ('Петров Петр', 'Хирург');
+
+INSERT INTO shift_report (doctor_id, report_date, notes) VALUES
+  (1, CURRENT_DATE, 'Ночное дежурство: 3 вызова'),
+  (2, CURRENT_DATE, 'Дневное дежурство: всё спокойно');
+```
