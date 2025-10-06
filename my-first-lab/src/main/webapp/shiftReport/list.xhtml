@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Список отчетов о сменах</title>
+</h:head>
+<h:body>
+    <h1>Список отчетов о сменах</h1>
+    <h:form>
+        <h:link value="Добавить отчет" outcome="create"/>
+    </h:form>
+    <h:form>
+        <h:dataTable value="#{shiftReportBean.shiftReports}" var="report" border="1">
+            <h:column>
+                <f:facet name="header">Доктор</f:facet>
+                #{report.doctor.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Дата</f:facet>
+                <h:outputText value="#{report.reportDate}">
+                    <f:convertDateTime pattern="dd.MM.yyyy"/>
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Заметки</f:facet>
+                #{report.notes}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Действия</f:facet>
+                <h:commandButton value="Редактировать" action="#{shiftReportBean.editShiftReport(report.id)}"/>
+                <h:commandButton value="Удалить" action="#{shiftReportBean.deleteShiftReport(report.id)}"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    <h:form rendered="#{not empty shiftReportBean.message}">
+        <h:outputLabel value="#{shiftReportBean.message}" style="color: green"/>
+    </h:form>
+    <h:link value="На главную" outcome="/index"/>
+</h:body>
+</html>

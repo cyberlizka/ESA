@@ -1,0 +1,6 @@
+com\example\medapp\model\Doctor.class
+com\example\medapp\service\ShiftReportService.class
+com\example\medapp\model\ShiftReport.class
+com\example\medapp\web\DoctorBean.class
+com\example\medapp\service\DoctorService.class
+com\example\medapp\web\ShiftReportBean.class
