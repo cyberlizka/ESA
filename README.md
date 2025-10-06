@@ -34,7 +34,8 @@ INSERT INTO shift_report (doctor_id, report_date, notes) VALUES
   (2, CURRENT_DATE, 'Дневное дежурство: всё спокойно');
 ```
 <img width="1907" height="598" alt="image" src="https://github.com/user-attachments/assets/3353cc1b-f15a-4bf6-9bbe-807032069158" />
-#### Результат
+
+### Результат
 
 <img width="1920" height="1080" alt="Снимок экрана (110)" src="https://github.com/user-attachments/assets/fd3e45fb-3b2f-4cca-9ae7-c751f02cf92d" />
 
