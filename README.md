@@ -10,6 +10,8 @@
 
 <img width="1280" height="469" alt="image" src="https://github.com/user-attachments/assets/06152b64-e332-4afd-b7be-b0eea27d29d6" />
 
+<img width="1907" height="598" alt="image" src="https://github.com/user-attachments/assets/3353cc1b-f15a-4bf6-9bbe-807032069158" />
+
 #### СУБД: PostgreSQL
 SQL:
 ```
@@ -34,7 +36,6 @@ INSERT INTO shift_report (doctor_id, report_date, notes) VALUES
   (1, CURRENT_DATE, 'Ночное дежурство: 3 вызова'),
   (2, CURRENT_DATE, 'Дневное дежурство: всё спокойно');
 ```
-<img width="1907" height="598" alt="image" src="https://github.com/user-attachments/assets/3353cc1b-f15a-4bf6-9bbe-807032069158" />
 
 ### Результат
 
