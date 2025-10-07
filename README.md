@@ -6,7 +6,8 @@
 #### IDE: Eclipse IDE for Enterprise Java and Web Developers
 #### JDK: jdk-17.0.16+8
 #### GlassFish: Eclipse GlassFish 7.0.24 
-<img width="1113" height="622" alt="Снимок экрана 2025-10-06 144255" src="https://github.com/user-attachments/assets/e05cdd2b-5dac-460c-9402-a9b07d20d24d" />
+<img width="1108" height="622" alt="image" src="https://github.com/user-attachments/assets/3d5958a8-c3f1-4c3d-914e-a3bf3fcc3819" />
+
 <img width="1280" height="469" alt="image" src="https://github.com/user-attachments/assets/06152b64-e332-4afd-b7be-b0eea27d29d6" />
 
 #### СУБД: PostgreSQL
