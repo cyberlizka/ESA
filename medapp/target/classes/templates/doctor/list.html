@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список докторов</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    h1 {
+        color: #333;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        border: 1px solid black; 
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }  
+
+    .message {
+        color: green;
+        font-weight: bold;
+    }
+    .error-message {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <h1>Список докторов</h1>
+
+    <div th:if="${message}" class="message">
+        <p th:text="${message}"></p>
+    </div>
+    <div th:if="${errorMessage}" class="error-message">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Специальность</th> 
+                <th>Последний отчет</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="doctor : ${doctors}">
+                <td th:text="${doctor.id}">1</td>
+                <td th:text="${doctor.name}">Иван Иванов</td>
+                <td th:text="${doctor.specialty}">Терапевт</td> 
+                <td>                   
+                    <span th:with="latestReport=${shiftReportService.getLatestShiftReportForDoctor(doctor.id)}">
+                        <span th:if="${latestReport != null}"
+                              th:text="${reportContentFormatter.getShortReportContent(latestReport, 50)}">
+                            Содержимое отчета
+                        </span> 
+                        <span th:unless="${latestReport != null}">Нет отчетов</span>
+                    </span>
+                </td>
+                <td>
+                    <a th:href="@{/doctors/edit/{id}(id=${doctor.id})}">Редактировать</a> |
+                    <form th:action="@{/doctors/delete/{id}(id=${doctor.id})}" method="post" style="display:inline;">
+                        <button type="submit" th:onclick="return confirm('Вы уверены, что хотите удалить этого доктора?')">Удалить</button>
+                    </form>
+                </td>                
+            </tr>
+        </tbody>
+    </table>
+    <p><a th:href="@{/doctors/create}">Добавить нового доктора</a></p>    
+    <p><a th:href="@{/}">На главную</a></p>
+</body>
+</html>

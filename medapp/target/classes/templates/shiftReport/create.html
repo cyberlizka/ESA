@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить отчет о смене</title>
+</head>
+<body>
+    <h1>Добавить отчет о смене</h1>
+    <form th:action="@{/shiftReports/create}" th:object="${shiftReport}" method="post">
+        <label for="doctor">Доктор:</label>
+        <select id="doctor" name="doctorId" required> 
+            <option value="">-- Выберите доктора --</option>
+            <option th:each="doc : ${doctors}"
+                    th:value="${doc.id}"
+                    th:text="${doc.name}">Доктор Имя</option>
+        </select>
+        <br/>
+        <label for="notes">Заметки:</label>
+        <textarea id="notes" th:field="*{notes}"></textarea>
+        <br/>
+        <button type="submit">Сохранить</button>
+        <a th:href="@{/shiftReports}">Отмена</a>
+    </form>
+</body>
+</html>

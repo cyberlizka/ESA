@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить доктора</title>
+</head>
+<body>
+    <h1>Добавить доктора</h1>
+    <form th:action="@{/doctors/create}" th:object="${doctor}" method="post">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" th:field="*{name}" required/>
+        <br/>
+        <label for="specialty">Специальность:</label>
+        <input type="text" id="specialty" th:field="*{specialty}"/>
+        <br/>
+        <button type="submit">Сохранить</button>
+        <a th:href="@{/doctors}">Отмена</a>
+    </form>
+</body>
+</html>
