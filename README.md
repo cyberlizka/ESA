@@ -6,6 +6,7 @@
 #### IDE: Eclipse IDE for Enterprise Java and Web Developers
 #### JDK: jdk-17.0.16+8
 #### СУБД: PostgreSQL
+#### Приложение на Spring
 ### Результат
 
 <img width="1280" height="266" alt="image" src="https://github.com/user-attachments/assets/c8172903-0b50-4fa8-97fa-d88c51cd8a4b" />
