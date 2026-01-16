@@ -60,6 +60,6 @@ public class ShiftReportService {
     private void sendChangeMessage(String entityName, String entityId, String changeType, String changeDetails) {
         EntityChangeMessage message = new EntityChangeMessage(entityName, entityId, changeType, changeDetails);
         System.out.println("Sending JMS message: " + message);
-        jmsTemplate.convertAndSend("entityChangeQueue", message);
+        jmsTemplate.convertAndSend("entityChangeTopic", message);
     }
 }
