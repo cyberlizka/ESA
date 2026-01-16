@@ -1,9 +1,9 @@
 package com.example.medapp.config;
 
 import jakarta.jms.ConnectionFactory;
-import jakarta.jms.Queue;
+import jakarta.jms.Topic;
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.activemq.command.ActiveMQQueue;
+import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.EnableJms;
@@ -18,8 +18,8 @@ import org.springframework.jms.support.converter.MessageType;
 public class JmsConfig {
 
     @Bean
-    public Queue queue() {
-        return new ActiveMQQueue("entityChangeQueue");
+    public Topic entityChangeTopic() {
+        return new ActiveMQTopic("entityChangeTopic");
     }
 
     @Bean
@@ -39,21 +39,29 @@ public class JmsConfig {
         return converter;
     }
 
+
     @Bean
-    public JmsTemplate jmsTemplate(ConnectionFactory connectionFactory, MessageConverter messageConverter) {
+    public JmsTemplate jmsTemplate(
+            ConnectionFactory connectionFactory,
+            MessageConverter messageConverter
+    ) {
         JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory);
         jmsTemplate.setMessageConverter(messageConverter);
-        jmsTemplate.setDefaultDestinationName("entityChangeQueue");
+        jmsTemplate.setPubSubDomain(true); // ВАЖНО: Topic
+        jmsTemplate.setDefaultDestinationName("entityChangeTopic");
         return jmsTemplate;
     }
 
     @Bean
-    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(
+    public DefaultJmsListenerContainerFactory topicListenerFactory(
             ConnectionFactory connectionFactory,
-            MessageConverter messageConverter) {
-        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+            MessageConverter messageConverter
+    ) {
+        DefaultJmsListenerContainerFactory factory =
+                new DefaultJmsListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         factory.setMessageConverter(messageConverter);
+        factory.setPubSubDomain(true); // Topic
         factory.setConcurrency("1-1");
         return factory;
     }
