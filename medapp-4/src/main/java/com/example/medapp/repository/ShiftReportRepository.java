@@ -9,7 +9,5 @@ import java.util.List;
 @Repository
 public interface ShiftReportRepository extends JpaRepository<ShiftReport, Integer> {
 
-    List<ShiftReport> findByDoctorId(Integer doctorId);
 
-    List<ShiftReport> findByDoctorIdOrderByReportDateDesc(Integer doctorId);
 }
