@@ -11,7 +11,5 @@ public interface NotificationRepository extends JpaRepository<Notification, Long
 
     List<Notification> findByEntityNameAndChangeType(String entityName, String changeType);
 
-    List<Notification> findByEntityNameAndChangeTypeIn(String entityName, List<String> changeTypes);
-
-    List<Notification> findByEntityNameInAndChangeType(List<String> entityNames, String changeType);
 }
+
